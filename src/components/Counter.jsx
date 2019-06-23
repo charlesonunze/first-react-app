@@ -6,22 +6,31 @@ class Counter extends Component {
 		tags: []
 	};
 
+	handleIncrement = () => {
+		console.log('Clicked!', this);
+	};
+
 	render() {
 		return (
 			<div className='pt-4'>
-				{/* <span
+				<span
 					className={this.getClasses()}
 					style={{ fontWeight: 'bold' }}
 				>
 					{this.formatCount()}
 				</span>
 
-				<button className='btn btn-primary btn-sm'>Increment</button> */}
+				<button
+					onClick={this.handleIncrement}
+					className='btn btn-primary btn-sm'
+				>
+					Increment
+				</button>
 
-				{this.renderTags()}
+				{/* {this.renderTags()}
 				{this.state.tags.length < 1 && (
 					<p>Please create a new tag!</p>
-				)}
+				)} */}
 			</div>
 		);
 	}
