@@ -7,12 +7,15 @@ class Counter extends Component {
 
 	render() {
 		return (
-			<div className='text-center pt-4'>
-				<span className='badge badge-info mr-2'>
+			<div className='pt-4'>
+				<span
+					className={this.getClasses()}
+					style={{ fontWeight: 'bold' }}
+				>
 					{this.formatCount()}
 				</span>
 
-				<button className='btn btn-primary'>Increment</button>
+				<button className='btn btn-primary btn-sm'>Increment</button>
 			</div>
 		);
 	}
@@ -20,6 +23,11 @@ class Counter extends Component {
 	formatCount() {
 		const { count } = this.state;
 		return count === 0 ? 'Zero' : count;
+	}
+
+	getClasses() {
+		let classes = 'badge m-2 badge-';
+		return (classes += this.state.count === 0 ? 'danger' : 'info');
 	}
 }
 
