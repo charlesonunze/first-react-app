@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-	state = {};
+	state = {
+		count: 0
+	};
+
 	render() {
 		return (
-			<div className='text-center'>
-				<span className='badge badge-info'>Counter component</span>
+			<div className='text-center pt-4'>
+				<span className='badge badge-info mr-2'>
+					{this.formatCount()}
+				</span>
+
+				<button className='btn btn-primary'>Increment</button>
 			</div>
 		);
+	}
+
+	formatCount() {
+		const { count } = this.state;
+		return count === 0 ? 'Zero' : count;
 	}
 }
 
