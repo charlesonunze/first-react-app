@@ -35,7 +35,21 @@ class App extends Component {
 		this.setState({ counters });
 	};
 
+	// Mount Phase - First Life Cycle Method
+	constructor(props) {
+		super(props);
+		console.log('App - Constrcutor Called', this.props);
+	}
+
+	// Mount Phase - Third Life Cycle Method
+	componentDidMount() {
+		console.log('App - Mounted!');
+	}
+
+	// Mount Phase - Second Life Cycle Method
 	render() {
+		console.log('App - Rendered!');
+
 		return (
 			<>
 				<Navbar
