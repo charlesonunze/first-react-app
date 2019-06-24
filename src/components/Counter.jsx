@@ -1,42 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Counter extends Component {
-	render() {
-		return (
-			<div>
-				<span
-					className={this.getClasses()}
-					style={{ fontWeight: 'bold' }}
-				>
-					{this.formatValue()}
-				</span>
+const Counter = ({ id, value, onIncrement, onDelete }) => (
+	<div>
+		<span
+			className={getClasses(value)}
+			style={{ fontWeight: 'bold' }}
+		>
+			{formatValue(value)}
+		</span>
 
-				<button
-					onClick={() => this.props.onIncrement(this.props.id)}
-					className='btn btn-primary btn-sm'
-				>
-					Increment
-				</button>
+		<button
+			onClick={() => onIncrement(id)}
+			className='btn btn-primary btn-sm'
+		>
+			Increment
+		</button>
 
-				<button
-					onClick={() => this.props.onDelete(this.props.id)}
-					className='btn btn-danger btn-sm m-2'
-				>
-					Delete
-				</button>
-			</div>
-		);
-	}
+		<button
+			onClick={() => onDelete(id)}
+			className='btn btn-danger btn-sm m-2'
+		>
+			Delete
+		</button>
+	</div>
+);
 
-	formatValue() {
-		const { value } = this.props;
-		return value === 0 ? 'Zero' : value;
-	}
+function formatValue(value) {
+	return value === 0 ? 'Zero' : value;
+}
 
-	getClasses() {
-		let classes = 'badge m-2 badge-';
-		return (classes += this.props.value === 0 ? 'danger' : 'info');
-	}
+function getClasses(value) {
+	let classes = 'badge m-2 badge-';
+	return (classes += value === 0 ? 'danger' : 'info');
 }
 
 export default Counter;
