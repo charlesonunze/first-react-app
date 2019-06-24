@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+	// Unmount Phase - First Life Cycle Method
+	componentWillUnmount() {
+		console.log('Counter - Unmounted!');
+	}
+
 	// Update Phase - Second Life Cycle Method
 	componentDidUpdate(prevProps, prevState) {
 		console.log('prevProps', prevProps);
