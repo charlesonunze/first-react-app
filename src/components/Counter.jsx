@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-	state = {
-		value: this.props.value,
-		tags: []
-	};
-
-	handleIncrement = product => {
-		console.log(product);
-		this.setState({ value: this.state.value + 1 });
-	};
-
 	render() {
 		return (
-			<div className='pt-4'>
+			<div>
 				<span
 					className={this.getClasses()}
 					style={{ fontWeight: 'bold' }}
@@ -22,12 +12,7 @@ class Counter extends Component {
 				</span>
 
 				<button
-					onClick={() =>
-						this.handleIncrement({
-							product_name: 'Macbook Pro',
-							product_id: 123
-						})
-					}
+					onClick={() => this.props.onIncrement(this.props.id)}
 					className='btn btn-primary btn-sm'
 				>
 					Increment
@@ -39,34 +24,18 @@ class Counter extends Component {
 				>
 					Delete
 				</button>
-
-				{/* {this.renderTags()}
-				{this.state.tags.length < 1 && (
-					<p>Please create a new tag!</p>
-				)} */}
 			</div>
 		);
 	}
 
 	formatValue() {
-		const { value } = this.state;
+		const { value } = this.props;
 		return value === 0 ? 'Zero' : value;
 	}
 
 	getClasses() {
 		let classes = 'badge m-2 badge-';
-		return (classes += this.state.value === 0 ? 'danger' : 'info');
-	}
-
-	renderTags() {
-		if (this.state.tags.length < 1) return <p>There are no tags!</p>;
-		return (
-			<ul>
-				{this.state.tags.map(tag => (
-					<li key={tag}>{tag}</li>
-				))}
-			</ul>
-		);
+		return (classes += this.props.value === 0 ? 'danger' : 'info');
 	}
 }
 
