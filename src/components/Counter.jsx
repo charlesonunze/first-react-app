@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+	// Update Phase - Second Life Cycle Method
+	componentDidUpdate(prevProps, prevState) {
+		console.log('prevProps', prevProps);
+		console.log('prevState', prevState);
+		console.log('Counter - Updated!');
+	}
+
 	// Mount Phase - Third Life Cycle Method
 	componentDidMount() {
 		console.log('Counter - Mounted!');
 	}
 
 	// Mount Phase - Second Life Cycle Method
+	// Update Phase - First Life Cycle Method
 	render() {
 		console.log('Counter - Rendered!');
 
